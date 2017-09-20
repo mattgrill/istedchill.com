@@ -1,0 +1,49 @@
+{
+  "name": "istedchill.com",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:mattgrill/istedchill.com.git",
+  "author": "Matthew Grill <matt.grill@acquia.com>",
+  "license": "MIT",
+  "scripts": {
+    "watch:js": "./node_modules/.bin/webpack --watch --config webpack.config.js",
+    "build:js": "NODE_ENV='production' ./node_modules/.bin/webpack --config webpack.config.js",
+    "start": "./node_modules/.bin/serve dist --single"
+  },
+  "dependencies": {
+    "istedchill": "^1.1.0",
+    "preact": "^8.2.5",
+    "serve": "^6.1.0"
+  },
+  "devDependencies": {
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-plugin-transform-react-jsx": "^6.24.1",
+    "babel-preset-env": "^1.6.0",
+    "babili-webpack-plugin": "^0.1.2",
+    "webpack": "^3.6.0"
+  },
+  "babel": {
+    "plugins": [
+      [
+        "transform-react-jsx",
+        {
+          "pragma": "h"
+        }
+      ]
+    ],
+    "presets": [
+      [
+        "env",
+        {
+          "modules": false,
+          "targets": {
+            "browsers": [
+              "last 2 versions"
+            ]
+          }
+        }
+      ]
+    ]
+  }
+}

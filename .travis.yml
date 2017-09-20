@@ -6,6 +6,7 @@ branches:
     - master
 script:
   - npm i -g now
+  - npm run build:js
   - now -t $TOKEN rm -y $DOMAINNAME
   - now -C -t $TOKEN -n $DOMAINNAME
   - export deploy_url=$(now -t $TOKEN ls $DOMAINNAME | awk '/ url/,EOF' | tail -n +2 | awk '{ print $1 }')
