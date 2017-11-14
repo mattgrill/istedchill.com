@@ -1,3 +1,3 @@
 import React from 'react';
 
-export default () => (<h1>No</h1>);
+export default () => (<h1>Yes</h1>);

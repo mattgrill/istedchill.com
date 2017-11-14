@@ -7,7 +7,7 @@
   "license": "MIT",
   "scripts": {
     "watch": "./node_modules/.bin/webpack --watch --config webpack.config.js",
-    "build": "NODE_ENV='production' ./node_modules/.bin/webpack --progress --config webpack.config.js",
+    "build:js": "NODE_ENV='production' ./node_modules/.bin/webpack --progress --config webpack.config.js",
     "start:dev": "./node_modules/.bin/nodemon dist/server.js",
     "start": "node dist/server.js"
   },
