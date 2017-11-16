@@ -99,11 +99,20 @@ server.get('/', function (req, res) {
   res.send(Object(__WEBPACK_IMPORTED_MODULE_4__template__["a" /* default */])({
     body: Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__browser_components_app__["a" /* default */], null))
   }));
-});
-
-server.listen(process.env.PORT || 8888, function () {
-  console.log('LISTENING ON ' + (process.env.PORT || 8888));
-});
+}).get('/api', function (req, res) {
+  res.send({
+    links: {
+      self: 'https://istedchill.com/api'
+    },
+    data: [{
+      type: 'status',
+      id: 1,
+      attributes: {
+        chill: 'Yes'
+      }
+    }]
+  });
+}).listen(process.env.PORT || 8888);
 
 /***/ }),
 /* 2 */

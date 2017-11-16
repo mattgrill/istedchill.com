@@ -9,12 +9,24 @@ const server = express();
 
 server.use(express.static('public'));
 
-server.get('/', (req, res) => {
-  res.send(template({
-    body: renderToString(<App />),
-  }));
-});
-
-server.listen(process.env.PORT || 8888, () => {
-  console.log(`LISTENING ON ${process.env.PORT || 8888}`);
-});
+server
+  .get('/', (req, res) => {
+    res.send(template({
+      body: renderToString(<App />),
+    }));
+  })
+  .get('/api', (req, res) => {
+    res.send({
+      links: {
+        self: 'https://istedchill.com/api',
+      },
+      data: [{
+        type: 'status',
+        id: 1,
+        attributes: {
+          chill: 'Yes',
+        },
+      }],
+    });
+  })
+  .listen(process.env.PORT || 8888);
