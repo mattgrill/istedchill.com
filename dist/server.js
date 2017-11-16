@@ -83,7 +83,10 @@ Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom_server__ = __webpack_require__(3);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_2_react_dom_server___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_3__browser_components_app__ = __webpack_require__(4);
-/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__template__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_4__template__ = __webpack_require__(6);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_5__status__ = __webpack_require__(7);
+
+
 
 
 
@@ -95,12 +98,12 @@ var server = __WEBPACK_IMPORTED_MODULE_0_express___default()();
 
 server.use(__WEBPACK_IMPORTED_MODULE_0_express___default.a.static('public'));
 
-server.get('/', function (req, res) {
+server.disable('x-powered-by').get('/', function (req, res) {
   res.send(Object(__WEBPACK_IMPORTED_MODULE_4__template__["a" /* default */])({
-    body: Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__browser_components_app__["a" /* default */], null))
+    body: Object(__WEBPACK_IMPORTED_MODULE_2_react_dom_server__["renderToString"])(__WEBPACK_IMPORTED_MODULE_1_react___default.a.createElement(__WEBPACK_IMPORTED_MODULE_3__browser_components_app__["a" /* default */], { status: __WEBPACK_IMPORTED_MODULE_5__status__["a" /* default */] }))
   }));
 }).get('/api', function (req, res) {
-  res.send({
+  res.set('Content-Type', 'application/vnd.api+json').send({
     links: {
       self: 'https://istedchill.com/api'
     },
@@ -108,7 +111,7 @@ server.get('/', function (req, res) {
       type: 'status',
       id: 1,
       attributes: {
-        chill: 'Yes'
+        chill: __WEBPACK_IMPORTED_MODULE_5__status__["a" /* default */]
       }
     }]
   });
@@ -133,18 +136,34 @@ module.exports = require("react-dom/server");
 "use strict";
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react__ = __webpack_require__(0);
 /* harmony import */ var __WEBPACK_IMPORTED_MODULE_0_react___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_0_react__);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types__ = __webpack_require__(5);
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_1_prop_types___default = __webpack_require__.n(__WEBPACK_IMPORTED_MODULE_1_prop_types__);
 
 
-/* harmony default export */ __webpack_exports__["a"] = (function () {
+
+var App = function App(_ref) {
+  var status = _ref.status;
   return __WEBPACK_IMPORTED_MODULE_0_react___default.a.createElement(
     'h1',
     null,
-    'Yes'
+    status
   );
-});
+};
+
+App.propTypes = {
+  status: __WEBPACK_IMPORTED_MODULE_1_prop_types___default.a.string.isRequired
+};
+
+/* harmony default export */ __webpack_exports__["a"] = (App);
 
 /***/ }),
 /* 5 */
+/***/ (function(module, exports) {
+
+module.exports = require("prop-types");
+
+/***/ }),
+/* 6 */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -152,6 +171,13 @@ module.exports = require("react-dom/server");
   var body = _ref.body;
   return "\n    <!DOCTYPE html>\n    <html>\n      <head>\n        <title>Is Ted Chill . Com</title>\n      </head>\n\n      <body>\n        <div id=\"root\">" + body + "</div>\n      </body>\n      <script src=\"bundle.js\"></script>\n    </html>\n  ";
 });
+
+/***/ }),
+/* 7 */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+/* harmony default export */ __webpack_exports__["a"] = ('Yes');
 
 /***/ })
 /******/ ]);

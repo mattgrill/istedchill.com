@@ -3,4 +3,6 @@ import { render } from 'react-dom';
 
 import App from './components/app';
 
-render(<App />, document.getElementById('root'));
+import status from '../status';
+
+render(<App status={status} />, document.getElementById('root'));
